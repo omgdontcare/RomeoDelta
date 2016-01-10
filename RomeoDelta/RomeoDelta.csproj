@@ -7,7 +7,7 @@
     <ProjectGuid>{B9DACF9B-6CBD-421B-A53C-AEDA61342B5F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RomeoDelta</RootNamespace>
+    <RootNamespace>Test</RootNamespace>
     <AssemblyName>RomeoDelta</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IWordFrequency.cs" />
+    <Compile Include="IWordFrequencyAnalyzer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

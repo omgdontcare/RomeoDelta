@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    class Program
+    interface IWordFrequency
     {
-        static void Main(string[] args)
-        {
-        }
+        string Word { get; }
+        int Frequency { get; }
     }
 }
