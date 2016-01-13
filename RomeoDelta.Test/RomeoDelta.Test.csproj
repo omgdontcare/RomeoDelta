@@ -60,6 +60,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RomeoDelta\RomeoDelta.csproj">
+      <Project>{b9dacf9b-6cbd-421b-a53c-aeda61342b5f}</Project>
+      <Name>RomeoDelta</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

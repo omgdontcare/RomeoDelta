@@ -2,7 +2,7 @@
 
 namespace Test
 {
-    interface IWordFrequencyAnalyzer
+    public interface IWordFrequencyAnalyzer
     {
         /// <summary>
         /// Should return the highest frequency in the text (several words might actually have this frequency)

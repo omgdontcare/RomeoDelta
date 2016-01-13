@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    interface IWordFrequency
+    public interface IWordFrequency
     {
         string Word { get; }
         int Frequency { get; }
