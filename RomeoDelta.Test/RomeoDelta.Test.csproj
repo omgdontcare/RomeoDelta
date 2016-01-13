@@ -61,9 +61,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RomeoDelta\RomeoDelta.csproj">
-      <Project>{b9dacf9b-6cbd-421b-a53c-aeda61342b5f}</Project>
-      <Name>RomeoDelta</Name>
+    <ProjectReference Include="..\Test\Test.csproj">
+      <Project>{3caff0e5-00d9-4b48-bb46-61b895d1bdf6}</Project>
+      <Name>Test</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
