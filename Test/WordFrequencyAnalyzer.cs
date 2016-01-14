@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Test
@@ -15,7 +16,10 @@ namespace Test
 
         public int CalculateFrequencyForWord(string text, string word)
         {
-            return 0;
+            //see how many matches we get for 'word' within given 'text'
+            Regex wordRegex = new Regex(word, RegexOptions.IgnoreCase);
+            var matches = wordRegex.Matches(text); 
+            return matches.Count;
         }
 
         public int CalculateHighestFrequency(string text)
