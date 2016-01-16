@@ -24,9 +24,17 @@ namespace Test
         public IList<IWordFrequency> GetMostFrequentNWords(string text, int n)
         {
             var wordFrequencyList = ParseText(text);
-            var mostFrequentNWordsList = wordFrequencyList.OrderByDescending(x => x.Frequency).Take(n).ToList();
+            var mostFrequentNWordsList = wordFrequencyList.OrderByDescending(x => x.Frequency).ThenBy(x => x.Word).Take(n).ToList();
 
             return mostFrequentNWordsList;
+        }
+
+        public int GetFrequencyForGivenWord(string text, string word)
+        {
+            var wordFrequencyList = ParseText(text);
+            var givenWordItem = wordFrequencyList.FirstOrDefault(x => x.Word == word.ToLower());
+
+            return givenWordItem == null ? 0 : givenWordItem.Frequency;
         }
     }
 }

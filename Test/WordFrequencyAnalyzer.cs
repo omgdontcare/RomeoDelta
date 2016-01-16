@@ -17,9 +17,7 @@ namespace Test
 
         public int CalculateFrequencyForWord(string text, string word)
         {
-            //see how many matches we get for 'word' within given 'text'
-            var matches = Regex.Matches(text, String.Format(RegExPatterns.WordMatchPatternFormat, word), RegexOptions.IgnoreCase);
-            return matches.Count;
+            return _textParserUtility.GetFrequencyForGivenWord(text, word);
         }
 
         public int CalculateHighestFrequency(string text)
