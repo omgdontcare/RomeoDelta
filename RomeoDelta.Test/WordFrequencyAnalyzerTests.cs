@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using Test;
 
 namespace RomeoDelta.Test
@@ -47,7 +48,7 @@ namespace RomeoDelta.Test
         [Test]
         public void CalculateFrequencyForWord_SentenceHasDelimitersAndPunctuation_ShouldBeTwo()
         {
-            string text = "Comparing this year's iPhone and this year's Nexus isn't usually all that interesting, because Google's partnerships " +
+            string text = "Comparing this year's iPhone and this year's Nexus phone isn't usually all that interesting, because Google's partnerships " +
                           "with hardware partners are usually derived from an existing popular phone and so we've usually already seen what the compare will look like [...].";
             string word = "phone";
             int wordFrequency = _frequencyAnalyzer.CalculateFrequencyForWord(text, word);
@@ -72,6 +73,19 @@ namespace RomeoDelta.Test
             int highestFrequency = _frequencyAnalyzer.CalculateHighestFrequency(text);
 
             Assert.IsTrue(highestFrequency == 2, "Expected result was 2.");
+        }
+
+        [Test]
+        public void CalculateMostFrequentNWords_TextContainsOneWordWithHighestFrequency_ShouldReturnOneWord()
+        {
+            string text = "Stephen Edwin King was born the second son of Donald and Nellie Ruth Pillsbury King. " +
+                          "After his father left them when Stephen was two, he and his older brother, David, were raised by his mother.";
+            string word = "King";
+
+            IList<IWordFrequency> actualResult = _frequencyAnalyzer.CalculateMostFrequentNWords(text, 1);
+            IList<IWordFrequency> expectedResult = new List<IWordFrequency>() { new WordFrequency(2, "Word")};
+
+            CollectionAssert.AreEquivalent(actualResult, expectedResult, "Expected one word with the highest frequency");
         }
     }
 }

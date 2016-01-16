@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Test
+﻿namespace Test
 {
     public class WordFrequency : IWordFrequency
     {
-        public int Frequency
+        public WordFrequency(int frequency, string word)
         {
-            get
-            {
-                return 0;
-            }
+            Frequency = frequency;
+            Word = word;
         }
 
-        public string Word
-        {
-            get
-            {
-                return String.Empty;
-            }
-        }
+        public int Frequency { get; }
+
+        public string Word { get; }
     }
 }
