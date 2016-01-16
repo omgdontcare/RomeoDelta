@@ -12,7 +12,7 @@ namespace RomeoDelta.Test
         [SetUp]
         public void Init()
         {
-            _frequencyAnalyzer = new WordFrequencyAnalyzer();
+            _frequencyAnalyzer = new WordFrequencyAnalyzer(new TextParserUtility());
         }
 
         [Test]
@@ -76,16 +76,15 @@ namespace RomeoDelta.Test
         }
 
         [Test]
-        public void CalculateMostFrequentNWords_TextContainsOneWordWithHighestFrequency_ShouldReturnOneWord()
+        public void CalculateMostFrequentNWords_TextContainsTwoWordsWithHighestFrequency_ShouldReturnTwoWords()
         {
             string text = "Stephen Edwin King was born the second son of Donald and Nellie Ruth Pillsbury King. " +
-                          "After his father left them when Stephen was two, he and his older brother, David, were raised by his mother.";
-            string word = "King";
+                          "After his father left them when Stephen was two, he and his older brother, David, were raised by his mother. I'm a king.";
 
             IList<IWordFrequency> actualResult = _frequencyAnalyzer.CalculateMostFrequentNWords(text, 1);
-            IList<IWordFrequency> expectedResult = new List<IWordFrequency>() { new WordFrequency(2, "Word")};
+            IList<IWordFrequency> expectedResult = new List<IWordFrequency>() { new WordFrequency("King", 3), new WordFrequency("his", 3)};
 
-            CollectionAssert.AreEquivalent(actualResult, expectedResult, "Expected one word with the highest frequency");
+            CollectionAssert.AreEquivalent(actualResult, expectedResult, "Expected 2 words with the highest frequency");
         }
     }
 }

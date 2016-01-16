@@ -2,10 +2,10 @@
 {
     public class WordFrequency : IWordFrequency
     {
-        public WordFrequency(int frequency, string word)
+        public WordFrequency(string word, int frequency)
         {
             Frequency = frequency;
-            Word = word;
+            Word = word.ToLower();
         }
 
         public int Frequency { get; }
