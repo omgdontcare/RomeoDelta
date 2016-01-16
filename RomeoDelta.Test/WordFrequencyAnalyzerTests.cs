@@ -86,5 +86,17 @@ namespace RomeoDelta.Test
 
             CollectionAssert.AreEqual(actualResult, expectedResult, "Expected 1 word with the highest frequency");
         }
+
+        [Test]
+        public void CalculateMostFrequentNWords_TextIsEmpty_ShouldReturnEmptyList()
+        {
+            string text = "";
+
+            IList<IWordFrequency> actualResult = _frequencyAnalyzer.CalculateMostFrequentNWords(text, 1);
+            IList<IWordFrequency> expectedResult = new List<IWordFrequency>() { };
+
+            CollectionAssert.AreEqual(actualResult, expectedResult, "Expected empty list");
+        }
+
     }
 }
