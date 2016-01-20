@@ -1,34 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Test
 {
     public class WordFrequencyAnalyzer : IWordFrequencyAnalyzer
     {
-        private readonly ITextParserUtility _textParserUtility;
+        private readonly ITextParser _textParser;
 
-        public WordFrequencyAnalyzer(ITextParserUtility textParserUtility)
+        public WordFrequencyAnalyzer(ITextParser textParser)
         {
-            _textParserUtility = textParserUtility;
+            _textParser = textParser;
         }
 
         public int CalculateFrequencyForWord(string text, string word)
         {
-            return _textParserUtility.GetFrequencyForGivenWord(text, word);
+            var wordsList = _textParser.ParseText(text);
+            var wordFrequencyItem = wordsList.FirstOrDefault(x=>x.Word == word);
+            return wordFrequencyItem?.Frequency ?? 0;
         }
 
         public int CalculateHighestFrequency(string text)
         {
-            var mostFrequentWord = _textParserUtility.GetMostFrequentNWords(text, 1).FirstOrDefault();
-            return mostFrequentWord == null ? 0 : mostFrequentWord.Frequency;
+            return CalculateMostFrequentNWords(text, 1).FirstOrDefault()?.Frequency ?? 0;
         }
 
         public IList<IWordFrequency> CalculateMostFrequentNWords(string text, int n)
         {
-            return _textParserUtility.GetMostFrequentNWords(text, n);
+            var wordsList = _textParser.ParseText(text);
+            var wordFrequencyList = wordsList.OrderByDescending(x => x.Frequency).ThenBy(x => x.Word).Take(n).ToList();
+
+            return wordFrequencyList;
         }
+        
     }
 }

@@ -7,12 +7,14 @@ namespace RomeoDelta.Test
     [TestFixture]
     public class WordFrequencyAnalyzerTests
     {
-        private WordFrequencyAnalyzer _frequencyAnalyzer;
+        private IWordFrequencyAnalyzer _frequencyAnalyzer;
+        private ITextParser _textParser;
 
         [SetUp]
         public void Init()
         {
-            _frequencyAnalyzer = new WordFrequencyAnalyzer(new TextParserUtility());
+            _textParser = new TextParser();
+            _frequencyAnalyzer = new WordFrequencyAnalyzer(_textParser);
         }
 
         [Test]
